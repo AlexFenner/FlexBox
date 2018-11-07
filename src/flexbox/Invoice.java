@@ -1,14 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package flexbox;
 
-/**
- *
- * @author alexfenner
- */
-public class Invoice {
-    
+import java.util.ArrayList;
+
+public class Invoice extends Order {
+
+    public ArrayList<Box> boxes = new ArrayList<Box>();
+    //Constructor
+    Invoice(ArrayList<Box> orderbox) {
+        boxes = orderbox;
+    }
+
 }
