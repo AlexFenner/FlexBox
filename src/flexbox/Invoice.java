@@ -9,5 +9,8 @@ public class Invoice extends Order {
     Invoice(ArrayList<Box> orderbox) {
         boxes = orderbox;
     }
+    public ArrayList getBoxes(){
+        return boxes;
+    }
 
 }
