@@ -5,6 +5,7 @@
  */
 package flexbox;
 
+
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -66,7 +67,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        deleteTxt = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         deleteButton = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
@@ -404,9 +405,9 @@ public class GUI extends javax.swing.JFrame {
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Delete Box");
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        deleteTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                deleteTxtActionPerformed(evt);
             }
         });
 
@@ -415,6 +416,11 @@ public class GUI extends javax.swing.JFrame {
         jLabel20.setText("ID:");
 
         deleteButton.setText("Delete");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -431,7 +437,7 @@ public class GUI extends javax.swing.JFrame {
                             .addGap(41, 41, 41)
                             .addComponent(jLabel20)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(deleteTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -441,7 +447,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(deleteButton)
@@ -552,9 +558,9 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_sealBoxActionPerformed
 
     private void addBoxButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBoxButtonActionPerformed
-        double length,width,height;
-        int grade,colour,quantity;
-        boolean btmRein,crnrRein,seal;
+        double length, width, height;
+        int grade, colour, quantity;
+        boolean btmRein, crnrRein, seal;
         length = Double.valueOf(lengthTxt.getText());
         width = Double.valueOf(widthTxt.getText());
         height = Double.valueOf(heightTxt.getText());
@@ -563,19 +569,18 @@ public class GUI extends javax.swing.JFrame {
         btmRein = brBox.isSelected();
         crnrRein = crBox.isSelected();
         seal = sealBox.isSelected();
-        quantity = (Integer)quantitySpin.getValue();
-        
-        DefaultTableModel model = (DefaultTableModel)orderTable.getModel();
-        
-        model.addRow(new Object[]{1, length+" X "+width+" X "+height, grade,colour,
-        btmRein,crnrRein,seal,quantity,"Calc Price"});
-        
-        
+        quantity = (Integer) quantitySpin.getValue();
+
+        DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
+        model.addRow(new Object[]{1, length + " X " + width + " X " + height, grade, colour,
+            btmRein, crnrRein, seal, quantity, "Calc Price"});
+
+
     }//GEN-LAST:event_addBoxButtonActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void deleteTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_deleteTxtActionPerformed
 
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
         lengthTxt.setText("");
@@ -590,10 +595,20 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_clearButtonActionPerformed
 
     private void genInvoiceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genInvoiceButtonActionPerformed
-        
+
         this.setVisible(false);
         new InvoiceGUI().setVisible(true);
     }//GEN-LAST:event_genInvoiceButtonActionPerformed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        int idDel = Integer.valueOf(deleteTxt.getText());
+        DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
+        for (int i = 0; i < model.getRowCount(); i++) {
+            if ((model.getValueAt(i, 0)).equals(idDel)) {
+                model.removeRow(i);
+            }
+        }
+    }//GEN-LAST:event_deleteButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -637,6 +652,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> colourCombo;
     private javax.swing.JCheckBox crBox;
     private javax.swing.JButton deleteButton;
+    private javax.swing.JTextField deleteTxt;
     private javax.swing.JButton genInvoiceButton;
     private javax.swing.JComboBox<String> gradeCombo;
     private javax.swing.JTextField heightTxt;
@@ -667,7 +683,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField lengthTxt;
     private javax.swing.JTable orderTable;
     private javax.swing.JSpinner quantitySpin;

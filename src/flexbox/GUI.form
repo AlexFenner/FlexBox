@@ -712,7 +712,7 @@
                                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                                   <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTextField4" min="-2" pref="82" max="-2" attributes="0"/>
+                                  <Component id="deleteTxt" min="-2" pref="82" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -727,7 +727,7 @@
                       <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="deleteTxt" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -749,9 +749,9 @@
                 <Property name="text" type="java.lang.String" value="Delete Box"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField4">
+            <Component class="javax.swing.JTextField" name="deleteTxt">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField4ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteTxtActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel20">
@@ -769,6 +769,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Delete"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
