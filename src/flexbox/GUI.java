@@ -456,7 +456,7 @@ public class GUI extends javax.swing.JFrame {
 
         jPanel6.setBackground(new java.awt.Color(51, 51, 51));
 
-        genInvoiceButton.setText("Generate Ivoice");
+        genInvoiceButton.setText("Generate Invoice");
         genInvoiceButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 genInvoiceButtonActionPerformed(evt);
@@ -603,9 +603,11 @@ public class GUI extends javax.swing.JFrame {
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         int idDel = Integer.valueOf(deleteTxt.getText());
         DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
-        for (int i = 0; i < model.getRowCount(); i++) {
+        int numOfRows = model.getRowCount();
+        for (int i = 0; i<numOfRows; i++) {
             if ((model.getValueAt(i, 0)).equals(idDel)) {
                 model.removeRow(i);
+                
             }
         }
     }//GEN-LAST:event_deleteButtonActionPerformed

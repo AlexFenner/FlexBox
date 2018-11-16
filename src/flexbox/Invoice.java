@@ -12,5 +12,6 @@ public class Invoice extends Order {
     public ArrayList getBoxes(){
         return boxes;
     }
+    
 
 }
