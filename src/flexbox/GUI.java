@@ -7,6 +7,7 @@ package flexbox;
 
 
 import javax.swing.table.DefaultTableModel;
+import static jdk.nashorn.internal.objects.NativeMath.round;
 
 /**
  *
@@ -570,10 +571,12 @@ public class GUI extends javax.swing.JFrame {
         crnrRein = crBox.isSelected();
         seal = sealBox.isSelected();
         quantity = (Integer) quantitySpin.getValue();
+        
+        Box box = new Box(1,length,width,height,grade,colour,btmRein,crnrRein,seal,quantity);
 
         DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
         model.addRow(new Object[]{1, length + " X " + width + " X " + height, grade, colour,
-            btmRein, crnrRein, seal, quantity, "Calc Price"});
+            btmRein, crnrRein, seal, quantity, "£"+String.format("%.2f", box.getCost(box))});
 
 
     }//GEN-LAST:event_addBoxButtonActionPerformed
