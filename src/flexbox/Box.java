@@ -111,53 +111,219 @@ public class Box extends Order {
     }
 
     public double getArea() {
-        return 
-          2 * (height * width) 
-        + 2 * (height * length) 
-        + 2 * (width * length);
+        return 2 * (height * width) + 2 * (height * length) + 2 * (width * length);
     }
-
-    public double getCost(Box box) {        
+    public int noColours(boolean botReinf, boolean cornReinf){
+        boolean bot = botReinf;
+        boolean corn = cornReinf;
+         if (!bot)
+         {
+            if(!corn)
+            {
+                return 1;
+            }
+            else
+            {
+                return 6;
+            }
+         }
+         else
+        {
+            return 6;
+        }
+    }
+    public int oneColours(boolean botReinf, boolean cornReinf){
+        boolean bot = botReinf;
+        boolean corn = cornReinf;
+        if (!bot)
+        {
+            return 6;
+        }
+        else
+        {
+            if(!corn)
+            {
+                return 2;
+            }
+            else
+            {
+                return 6;
+            }
+        }
+    }
+    public int multiColors(boolean botReinf, boolean cornReinf){
+        boolean bot = botReinf;
+        boolean corn = cornReinf;
+        if(!bot)
+        {
+            if(!corn)
+            {
+                return 3;
+            }
+            else
+            {                            
+                return 6;
+            }
+        }
+        else
+        {
+            if(!corn)
+            {
+                return 4;
+            }
+            else
+            {
+                return 5;
+            }
+        }        
+    }
+    public int getBoxType(){
+        int type;        
+        switch(grade){
+            case 1:{
+                if (colour == 0)
+                {
+                    type = noColours(bottomReinforcement, cornerReinforcement);
+                    return type;
+                }
+                else{
+                    type = 6;
+                    return type;
+                }
+            }
+            case 2:
+            {
+                switch (colour)
+                {
+                    case 0:
+                        type = noColours(bottomReinforcement, cornerReinforcement);
+                        return type;
+                    case 1:
+                        type = oneColours(bottomReinforcement, cornerReinforcement);
+                        return type;
+                    default:
+                        if(!bottomReinforcement)
+                        {
+                            if(!cornerReinforcement)
+                            {
+                                type = 3;
+                                return type;
+                            }
+                            else
+                            {
+                                type = 6;
+                                return type;
+                            }
+                        }
+                        else
+                        {
+                            if(!cornerReinforcement)
+                        {
+                            type = 4;
+                            return type;
+                        }
+                        else
+                        {
+                            type = 6;
+                            return type;
+                        }
+                    }
+                }
+            }
+            case 3:
+            {
+                switch (colour)
+                 {
+                        case 0:
+                        {
+                            type = noColours(bottomReinforcement, cornerReinforcement);
+                            return type;
+                        }
+                        case 1:
+                        {
+                            type = oneColours(bottomReinforcement, cornerReinforcement);
+                            return type;
+                        }
+                        default:
+                        {
+                            type = multiColors(bottomReinforcement, cornerReinforcement);
+                            return type;
+                        }
+                 }
+            }
+            case 4:
+            {
+                switch (colour)
+                {
+                    case 0:
+                    {
+                        type = 6;
+                        return type;
+                    }
+                    case 1:
+                    {
+                        type = oneColours(bottomReinforcement, cornerReinforcement);
+                        return type;
+                    }
+                    default:
+                    {
+                        type = multiColors(bottomReinforcement, cornerReinforcement);
+                        return type;
+                    }
+                }
+            }
+            default:
+            {
+                switch (colour)
+                {
+                    case 0:
+                    {
+                        type = 6;
+                        return type;
+                    }
+                    case 1:
+                    {
+                        type = 6;
+                        return type;
+                    }
+                    default:
+                    {
+                        type = multiColors(bottomReinforcement, cornerReinforcement);
+                        return type;
+                    }
+                }
+            }
+        }
+    }
+    public double getCost(Box box) {
         double cost = 0;
         double area = box.getArea();
-        double percentIncrease = 0;
-        
-        switch (grade) {
-            case 1:  cost = 
-                     (0.55*area);
-                     break;
-            case 2:  cost = 
-                     (0.65*area);
-                     break;
-            case 3:  cost = 
-                     (0.82*area);
-                     break;
-            case 4:  cost = 
-                     (0.98*area);
-                     break;
-            case 5:  cost = 
-                     (1.50*area);
-                     break;
+        if (grade == 1) {
+            cost = area * 0.55;
+        } else if (grade == 2) {
+            cost = area * 0.65;
+        } else if (grade == 3) {
+            cost = area * 0.82;
+        } else if (grade == 4) {
+            cost = area * 0.98;
+        } else if (grade == 5) {
+            cost = area * 1.5;
         }
         if (bottomReinforcement == true) {
-            percentIncrease =+ 0.13;
+            cost = cost + cost * 0.13;
         }
         if (cornerReinforcement == true) {
-            percentIncrease =+ 0.12;
+            cost = cost + cost * 0.12;
         }
         if (sealable == true) {
-            percentIncrease =+ 0.10;
+            cost = cost + cost * 0.10;
         }
         if (colour == 1) {
-            percentIncrease =+ 0.12;
-        } 
-        else if (grade == 2) {
-            percentIncrease =+ 0.15;
+            cost = cost + cost * 0.12;
+        } else if (grade == 2) {
+            cost = cost + cost * 0.15;
         }
-        
-        System.out.println(percentIncrease);
-        
-        cost = cost * (percentIncrease + 1);
+
         cost *= box.getQuantity();
         
         return cost;
