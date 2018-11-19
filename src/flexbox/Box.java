@@ -139,9 +139,6 @@ public class Box extends Order {
                      (1.50*area);
                      break;
         }
-                     
-        System.out.println(cost);
-        
         if (bottomReinforcement == true) {
             percentIncrease =+ 0.13;
         }

@@ -215,6 +215,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Quantity:");
 
+        addBoxButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         addBoxButton.setText("Add to Order");
         addBoxButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -222,6 +223,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        clearButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         clearButton.setText("Clear");
         clearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -416,6 +418,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("ID:");
 
+        deleteButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         deleteButton.setText("Delete");
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -457,6 +460,7 @@ public class GUI extends javax.swing.JFrame {
 
         jPanel6.setBackground(new java.awt.Color(51, 51, 51));
 
+        genInvoiceButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         genInvoiceButton.setText("Generate Invoice");
         genInvoiceButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
