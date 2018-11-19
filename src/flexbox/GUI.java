@@ -5,7 +5,7 @@
  */
 package flexbox;
 
-
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import static jdk.nashorn.internal.objects.NativeMath.round;
 
@@ -575,12 +575,18 @@ public class GUI extends javax.swing.JFrame {
         crnrRein = crBox.isSelected();
         seal = sealBox.isSelected();
         quantity = (Integer) quantitySpin.getValue();
-        
-        Box box = new Box(1,length,width,height,grade,colour,btmRein,crnrRein,seal,quantity);
 
-        DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
-        model.addRow(new Object[]{1, length + " X " + width + " X " + height, grade, colour,
-            btmRein, crnrRein, seal, quantity, "£"+String.format("%.2f", box.getCost(box))});
+        Box box = new Box(1, length, width, height, grade, colour, btmRein, crnrRein, seal, quantity);
+        int type = box.getBoxType();
+
+        if (type != 6) {
+            DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
+            model.addRow(new Object[]{1, length + " X " + width + " X " + height, grade, colour,
+                btmRein, crnrRein, seal, quantity, "£" + String.format("%.2f", box.getCost(box))});
+        }
+        else{
+             JOptionPane.showMessageDialog(jPanel1, "Sorry. Unfortunately we can not supply this type of box.");
+        }
 
 
     }//GEN-LAST:event_addBoxButtonActionPerformed
@@ -611,10 +617,10 @@ public class GUI extends javax.swing.JFrame {
         int idDel = Integer.valueOf(deleteTxt.getText());
         DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
         int numOfRows = model.getRowCount();
-        for (int i = 0; i<numOfRows; i++) {
+        for (int i = 0; i < numOfRows; i++) {
             if ((model.getValueAt(i, 0)).equals(idDel)) {
                 model.removeRow(i);
-                
+
             }
         }
     }//GEN-LAST:event_deleteButtonActionPerformed

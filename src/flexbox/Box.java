@@ -177,7 +177,7 @@ public class Box extends Order {
             }
         }        
     }
-    public int getBoxType(){
+    public  int getBoxType(){
         int type;        
         switch(grade){
             case 1:{
