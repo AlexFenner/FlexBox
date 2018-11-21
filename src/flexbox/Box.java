@@ -298,32 +298,47 @@ public class Box extends Order {
     public double getCost(Box box) {
         double cost = 0;
         double area = box.getArea();
-        if (grade == 1) {
-            cost = area * 0.55;
-        } else if (grade == 2) {
-            cost = area * 0.65;
-        } else if (grade == 3) {
-            cost = area * 0.82;
-        } else if (grade == 4) {
-            cost = area * 0.98;
-        } else if (grade == 5) {
-            cost = area * 1.5;
+        double percentIncrease = 0;
+        
+        switch (grade) {
+            case 1:  cost = 
+                     (0.55*area);
+                     break;
+            case 2:  cost = 
+                     (0.65*area);
+                     break;
+            case 3:  cost = 
+                     (0.82*area);
+                     break;
+            case 4:  cost = 
+                     (0.98*area);
+                     break;
+            case 5:  cost = 
+                     (1.50*area);
+                     break;
         }
+                     
+        System.out.println(cost);
+        
         if (bottomReinforcement == true) {
-            cost = cost + cost * 0.13;
+            percentIncrease =+ 0.13;
         }
         if (cornerReinforcement == true) {
-            cost = cost + cost * 0.12;
+            percentIncrease =+ 0.12;
         }
         if (sealable == true) {
-            cost = cost + cost * 0.10;
+            percentIncrease =+ 0.10;
         }
         if (colour == 1) {
-            cost = cost + cost * 0.12;
-        } else if (grade == 2) {
-            cost = cost + cost * 0.15;
+            percentIncrease =+ 0.12;
+        } 
+        else if (grade == 2) {
+            percentIncrease =+ 0.15;
         }
-
+        
+        System.out.println(percentIncrease);
+        
+        cost = cost * (percentIncrease + 1);
         cost *= box.getQuantity();
         
         return cost;
