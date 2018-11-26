@@ -16,16 +16,18 @@ public class Box extends Order {
     //Constructor
     Box(int boxID, double boxLength, double boxWidth, double boxHeight, int boxGrade,
             int boxColour, boolean btmRein, boolean crnrRein, boolean boxSeal, int qnty) {
-        ID = boxID;
-        length = boxLength;
-        width = boxWidth;
-        height = boxHeight;
-        grade = boxGrade;
-        colour = boxColour;
-        bottomReinforcement = btmRein;
-        cornerReinforcement = crnrRein;
-        sealable = boxSeal;
-        quantity = qnty;
+        
+        this.ID = boxID;
+        this.length = boxLength;
+        this.width = boxWidth;
+        this.height = boxHeight;
+        this.grade = boxGrade;
+        this.colour = boxColour;
+        this.bottomReinforcement = btmRein;
+        this.cornerReinforcement = crnrRein;
+        this.sealable = boxSeal;
+        this.quantity = qnty;
+        
 
     }
 
@@ -71,7 +73,7 @@ public class Box extends Order {
     }
 
     public int getColour() {
-        return colour;
+        return 0;
     }
 
     public void setColour(int col) {
@@ -79,7 +81,7 @@ public class Box extends Order {
     }
 
     public boolean getBottomReinforcement() {
-        return bottomReinforcement;
+        return false;
     }
 
     public void setBottomReinforcement(boolean bottom) {
@@ -87,7 +89,7 @@ public class Box extends Order {
     }
 
     public boolean getCornerReinforcement() {
-        return cornerReinforcement;
+        return false;
     }
 
     public void setCornerReinforcement(boolean corner) {

@@ -565,30 +565,30 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_sealBoxActionPerformed
 
     private void addBoxButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBoxButtonActionPerformed
-        double length, width, height;
-        int grade, colour, quantity;
+        String length, width, height, quantity;
+        int grade, colour;
         boolean btmRein, crnrRein, seal;
-        length = Double.valueOf(lengthTxt.getText());
-        width = Double.valueOf(widthTxt.getText());
-        height = Double.valueOf(heightTxt.getText());
+        length = String.valueOf(lengthTxt.getText());
+        width = String.valueOf(widthTxt.getText());
+        height = String.valueOf(heightTxt.getText());
         grade = Integer.valueOf(gradeCombo.getSelectedItem().toString());
         colour = Integer.valueOf(colourCombo.getSelectedItem().toString());
         btmRein = brBox.isSelected();
         crnrRein = crBox.isSelected();
         seal = sealBox.isSelected();
-        quantity = (Integer) quantitySpin.getValue();
-
-        Box box = new Box(1, length, width, height, grade, colour, btmRein, crnrRein, seal, quantity);
+        quantity =  String.valueOf(quantitySpin.getValue());
+        Order.addToOrder(length, width, height, grade, colour, quantity, btmRein, crnrRein, seal);
+        /*
         int type = box.getBoxType();
 
         if (type != 6) {
             DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
             model.addRow(new Object[]{1, length + " X " + width + " X " + height, grade, colour,
-                btmRein, crnrRein, seal, quantity, "£" + String.format("%.2f", box.getCost(box))});
+                btmRein, crnrRein, seal, /quantity, "£" + String.format("%.2f", box.getCost(box))});
         }
         else{
              JOptionPane.showMessageDialog(SystemPanel, "Sorry. Unfortunately we can not supply this type of box.");
-        }
+        }*/
 
 
     }//GEN-LAST:event_addBoxButtonActionPerformed
