@@ -17,6 +17,12 @@ public class GUI extends javax.swing.JFrame {
     public GUI() {
         initComponents();
     }
+    public void notAvailable(){
+        JOptionPane.showMessageDialog(SystemPanel, "Sorry. Unfortunately we can not supply this type of box.");
+    }
+     public void inputError(){
+        JOptionPane.showMessageDialog(SystemPanel, "ERROR - please ensure data fields are entered ");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -578,17 +584,9 @@ public class GUI extends javax.swing.JFrame {
         seal = sealBox.isSelected();
         quantity =  String.valueOf(quantitySpin.getValue());
         Order.addToOrder(length, width, height, grade, colour, quantity, btmRein, crnrRein, seal);
-        /*
-        int type = box.getBoxType();
-
-        if (type != 6) {
-            DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
-            model.addRow(new Object[]{1, length + " X " + width + " X " + height, grade, colour,
-                btmRein, crnrRein, seal, /quantity, "£" + String.format("%.2f", box.getCost(box))});
-        }
-        else{
-             JOptionPane.showMessageDialog(SystemPanel, "Sorry. Unfortunately we can not supply this type of box.");
-        }*/
+        
+        
+        
 
 
     }//GEN-LAST:event_addBoxButtonActionPerformed
@@ -620,7 +618,10 @@ public class GUI extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_deleteButtonActionPerformed
-
+    public void addToTable(double length, double width, double height, int grade, int colour, boolean btmRein, boolean crnrRein, boolean seal, int quantity, String cost) {
+        DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
+        model.addRow(new Object[]{1, length + " X " + width + " X " + height, grade, colour, btmRein, crnrRein, seal, quantity, "£" + cost});
+    }
     /**
      * @param args the command line arguments
      */
@@ -655,12 +656,13 @@ public class GUI extends javax.swing.JFrame {
             }
         });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AddBoxPanel;
     private javax.swing.JPanel DeletionPanel;
     private javax.swing.JPanel OrderPanel;
-    private javax.swing.JPanel SystemPanel;
+    public static javax.swing.JPanel SystemPanel;
     private javax.swing.JLabel Title;
     private javax.swing.JPanel TotalPanel;
     private javax.swing.JButton addBoxButton;
@@ -695,10 +697,11 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField lengthTxt;
-    private javax.swing.JTable orderTable;
+    public javax.swing.JTable orderTable;
     private javax.swing.JSpinner quantitySpin;
     private javax.swing.JCheckBox sealBox;
     private javax.swing.JLabel totalOutput;
     private javax.swing.JTextField widthTxt;
     // End of variables declaration//GEN-END:variables
 }
+
