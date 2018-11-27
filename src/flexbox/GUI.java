@@ -34,6 +34,8 @@ public class GUI extends javax.swing.JFrame {
           DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
           int numOfRows = model.getRowCount();
           model.removeRow(ID);
+          deleteTxt.setText("");
+        
       }
       public void reloadTable(ArrayList<Box> boxes){
           DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
@@ -47,6 +49,9 @@ public class GUI extends javax.swing.JFrame {
               model.addRow(new Object[]{j+1, currBox.getLenght() + " X " + currBox.getWidth() + " X " +
              currBox.getHeight(), currBox.getGrade(), currBox.getColour(), currBox.getBottomReinforcement(),
              currBox.getCornerReinforcement(), currBox.getSealable(), currBox.getQuantity(), "£" + String.format("%.2f",currBox.getCost(currBox))});
+          }
+          if(boxes.size()==0){
+              totalOutput.setText("£0.00");
           }
           
       }
@@ -309,10 +314,10 @@ public class GUI extends javax.swing.JFrame {
                                     .addComponent(brBox)))
                             .addComponent(jLabel3)
                             .addGroup(AddBoxPanelLayout.createSequentialGroup()
-                                .addGroup(AddBoxPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(AddBoxPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel16)
                                     .addComponent(clearButton))
-                                .addGap(16, 16, 16)
+                                .addGap(21, 21, 21)
                                 .addGroup(AddBoxPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(AddBoxPanelLayout.createSequentialGroup()
                                         .addGap(10, 10, 10)
@@ -367,7 +372,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addGap(32, 32, 32)
                                 .addComponent(quantitySpin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(AddBoxPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(AddBoxPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(addBoxButton)
                             .addComponent(clearButton)))
                     .addComponent(brBox))
@@ -506,7 +511,7 @@ public class GUI extends javax.swing.JFrame {
             TotalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TotalPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+                .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
                 .addContainerGap())
             .addComponent(totalOutput, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -642,6 +647,15 @@ public class GUI extends javax.swing.JFrame {
     public void addToTable(double length, double width, double height, int grade, int colour, boolean btmRein, boolean crnrRein, boolean seal, int quantity, String cost,int ID) {
         DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
         model.addRow(new Object[]{ID, length + " X " + width + " X " + height, grade, colour, btmRein, crnrRein, seal, quantity, "£" + cost});
+        lengthTxt.setText("");
+        heightTxt.setText("");
+        widthTxt.setText("");
+        gradeCombo.setSelectedIndex(0);
+        colourCombo.setSelectedIndex(0);
+        brBox.setSelected(false);
+        crBox.setSelected(false);
+        sealBox.setSelected(false);
+        quantitySpin.setValue(0);
     }
     public void changeTotal(double cost){
         totalOutput.setText("£"+String.format("%.2f", cost));
