@@ -23,8 +23,9 @@ public class Invoice extends Order {
     }
 
     public static void takeFromTotal(Box box){
-        //
-        totalPrice -= box.getCost(box);
+       String cost = String.format("%.2f", box.getCost(box));
+        double addon = Double.valueOf(cost);
+        totalPrice -= addon;
     }
     public static double getTotal(){
         return totalPrice;
