@@ -1,13 +1,18 @@
 package flexbox;
 
 
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+
 
 public class Order {
+    
+    public static GUI gui = new GUI();
+    
+    public static void main(String[] args){
+        gui.setVisible(true);
+    }
 
     public static void addToOrder(String lengthS, String widthS, String heightS, int grade, int colour, String quantityS, boolean btmRein, boolean crnrRein, boolean seal) {
-        GUI gui = new GUI();
+        
         boolean valid = true;
         double length = 0, width = 0, height = 0;
         int quantity = 0;
