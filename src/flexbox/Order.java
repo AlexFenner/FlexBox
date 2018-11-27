@@ -36,31 +36,31 @@ public class Order {
             int type = getBoxType(grade, colour, btmRein, crnrRein);
 
             if (type == 1) {
-                Box1 box = new Box1(numOfBoxes, length, width, height, grade, colour, btmRein, crnrRein, seal, quantity);
+                Box1 box = new Box1(length, width, height, grade, colour, btmRein, crnrRein, seal, quantity);
                 cost = String.format("%.2f", box.getCost(box));
                 Invoice.addToTotal(box);
                 boxes.add(box);
             }
             if (type == 2) {
-                Box2 box = new Box2(numOfBoxes, length, width, height, grade, colour, btmRein, crnrRein, seal, quantity);
+                Box2 box = new Box2(length, width, height, grade, colour, btmRein, crnrRein, seal, quantity);
                 cost = String.format("%.2f", box.getCost(box));
                 Invoice.addToTotal(box);
                 boxes.add(box);
             }
             if (type == 3) {
-                Box3 box = new Box3(numOfBoxes, length, width, height, grade, colour, btmRein, crnrRein, seal, quantity);
+                Box3 box = new Box3(length, width, height, grade, colour, btmRein, crnrRein, seal, quantity);
                 cost = String.format("%.2f", box.getCost(box));
                 Invoice.addToTotal(box);
                 boxes.add(box);
             }
             if (type == 4) {
-                Box4 box = new Box4(numOfBoxes, length, width, height, grade, colour, btmRein, crnrRein, seal, quantity);
+                Box4 box = new Box4(length, width, height, grade, colour, btmRein, crnrRein, seal, quantity);
                 cost = String.format("%.2f", box.getCost(box));
                 Invoice.addToTotal(box);
                 boxes.add(box);
             }
             if (type == 5) {
-                Box5 box = new Box5(numOfBoxes, length, width, height, grade, colour, btmRein, crnrRein, seal, quantity);
+                Box5 box = new Box5(length, width, height, grade, colour, btmRein, crnrRein, seal, quantity);
                 cost = String.format("%.2f", box.getCost(box));
                 Invoice.addToTotal(box);
                 boxes.add(box);
@@ -72,7 +72,7 @@ public class Order {
 
             }
             if (valid) {
-                gui.addToTable(length, width, height, grade, colour, btmRein, crnrRein, seal, quantity, cost, numOfBoxes);
+                gui.addToTable(length, width, height, grade, colour, btmRein, crnrRein, seal, quantity, cost, boxes.size());
                 gui.changeTotal(Invoice.getTotal());
             }
         }
@@ -88,12 +88,14 @@ public class Order {
             gui.inputError();
             valid = false;
         }
-        if (valid && id-1>boxes.size()) {
+        
+        if (valid && id<=boxes.size() && id>0) {
             boxes.remove(id - 1);
             gui.clearTable(id - 1);
             gui.reloadTable(boxes);
         }
         else{
+            gui.noBoxError();
             
         }
 

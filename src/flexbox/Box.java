@@ -14,10 +14,10 @@ public abstract class Box extends Order {
     int quantity;
 
     //Constructor
-    Box(int boxID, double boxLength, double boxWidth, double boxHeight, int boxGrade,
+    Box(double boxLength, double boxWidth, double boxHeight, int boxGrade,
             int boxColour, boolean btmRein, boolean crnrRein, boolean boxSeal, int qnty) {
         
-        this.ID = boxID;
+        
         this.length = boxLength;
         this.width = boxWidth;
         this.height = boxHeight;
@@ -32,14 +32,6 @@ public abstract class Box extends Order {
     }
 
     //Get and setters
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int id) {
-        ID = id;
-    }
-
     public double getLenght() {
         return length;
     }
