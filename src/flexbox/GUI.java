@@ -622,6 +622,9 @@ public class GUI extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
         model.addRow(new Object[]{1, length + " X " + width + " X " + height, grade, colour, btmRein, crnrRein, seal, quantity, "£" + cost});
     }
+    public void changeTotal(double cost){
+        totalOutput.setText("£"+String.format("%.2f", cost));
+    }
     /**
      * @param args the command line arguments
      */

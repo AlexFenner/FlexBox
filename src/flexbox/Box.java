@@ -139,7 +139,7 @@ public abstract class Box extends Order {
                      break;
         }
                      
-        System.out.println(cost);
+        
         
         if (bottomReinforcement == true) {
             percentIncrease =+ 0.13;
@@ -157,7 +157,7 @@ public abstract class Box extends Order {
             percentIncrease =+ 0.15;
         }
         
-        System.out.println(percentIncrease);
+        
         
         cost = cost * (percentIncrease + 1);
         cost *= box.getQuantity();

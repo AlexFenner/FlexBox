@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Invoice extends Order {
     public ArrayList<Box> boxes = new ArrayList<Box>();
-    public double totalPrice;
+    public static double totalPrice=0;
 
     //Constructor
     Invoice(ArrayList<Box> orderbox, double price) {
@@ -15,13 +15,18 @@ public class Invoice extends Order {
         return boxes;
     }
 
-    public void addToTotal(Box box){
-        //
-        totalPrice += box.getCost(box);
+    public static void addToTotal(Box box){
+        
+        String cost = String.format("%.2f", box.getCost(box));
+        double addon = Double.valueOf(cost);
+        totalPrice += addon;
     }
 
-    public void takeFromTotal(Box box){
+    public static void takeFromTotal(Box box){
         //
         totalPrice -= box.getCost(box);
+    }
+    public static double getTotal(){
+        return totalPrice;
     }
 }

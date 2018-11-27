@@ -6,6 +6,7 @@ package flexbox;
 public class Order {
     
     public static GUI gui = new GUI();
+    public static int numOfBoxes = 0;
     
     public static void main(String[] args){
         gui.setVisible(true);
@@ -29,36 +30,44 @@ public class Order {
             valid = false;
         }
         if (valid == true) {
+            numOfBoxes++;
             int type = getBoxType(grade, colour, btmRein, crnrRein);
-            System.out.println("type: " + type);
+            
 
             if (type == 1) {
-                Box1 box = new Box1(5, length, width, height, grade, colour, btmRein, crnrRein, seal, quantity);
-               cost = String.format("%.2f", box.getCost(box));
+                Box1 box = new Box1(numOfBoxes, length, width, height, grade, colour, btmRein, crnrRein, seal, quantity);
+                cost = String.format("%.2f", box.getCost(box));
+                Invoice.addToTotal(box);
             }
             if (type == 2) {
-                Box2 box = new Box2(5, length, width, height, grade, colour, btmRein, crnrRein, seal, quantity);
+                Box2 box = new Box2(numOfBoxes, length, width, height, grade, colour, btmRein, crnrRein, seal, quantity);
                 cost = String.format("%.2f", box.getCost(box));
+                Invoice.addToTotal(box);
             }
             if (type == 3) {
-                Box3 box = new Box3(5, length, width, height, grade, colour, btmRein, crnrRein, seal, quantity);
+                Box3 box = new Box3(numOfBoxes, length, width, height, grade, colour, btmRein, crnrRein, seal, quantity);
                 cost = String.format("%.2f", box.getCost(box));
+                Invoice.addToTotal(box);
             }
             if (type == 4) {
-                Box4 box = new Box4(5, length, width, height, grade, colour, btmRein, crnrRein, seal, quantity);
+                Box4 box = new Box4(numOfBoxes, length, width, height, grade, colour, btmRein, crnrRein, seal, quantity);
                cost =  String.format("%.2f", box.getCost(box));
+               Invoice.addToTotal(box);
             }
             if (type == 5) {
-                Box5 box = new Box5(5, length, width, height, grade, colour, btmRein, crnrRein, seal, quantity);
+                Box5 box = new Box5(numOfBoxes, length, width, height, grade, colour, btmRein, crnrRein, seal, quantity);
                 cost = String.format("%.2f", box.getCost(box));
+                Invoice.addToTotal(box);
             }
             if (type == 6) {
+                numOfBoxes--;
                 valid = false;
                 gui.notAvailable();
 
             }
             if(valid){
                gui.addToTable(length, width, height, grade, colour, btmRein, crnrRein, seal, quantity, cost);
+               gui.changeTotal(Invoice.getTotal());
             }
         }
 
