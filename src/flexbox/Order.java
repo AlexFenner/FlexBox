@@ -90,6 +90,8 @@ public class Order {
         }
         
         if (valid && id<=boxes.size() && id>0) {
+            Invoice.takeFromTotal(boxes.get(id-1));
+            gui.changeTotal(Invoice.getTotal());
             boxes.remove(id - 1);
             gui.clearTable(id - 1);
             gui.reloadTable(boxes);
