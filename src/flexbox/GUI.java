@@ -1,4 +1,7 @@
-
+/**
+ *
+ * @author up861536,
+ */
 package flexbox;
 
 import java.util.ArrayList;
@@ -6,10 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import static jdk.nashorn.internal.objects.NativeMath.round;
 
-/**
- *
- * @author Alex
- */
+
 public class GUI extends javax.swing.JFrame {
 
     /**
