@@ -23,6 +23,9 @@ public class GUI extends javax.swing.JFrame {
      public void inputError(){
         JOptionPane.showMessageDialog(SystemPanel, "ERROR - please ensure data fields are entered ");
     }
+      public void boxNumError(){
+        JOptionPane.showMessageDialog(SystemPanel, "ERROR - Numerical values must be greater than 0 ");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

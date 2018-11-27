@@ -31,6 +31,10 @@ public class Order {
             gui.inputError();
             valid = false;
         }
+        if(quantity<=0 || width <=0 || length<=0 || height<=0){
+            valid=false;
+            gui.boxNumError();
+        }
         if (valid == true) {
             numOfBoxes++;
             int type = getBoxType(grade, colour, btmRein, crnrRein);
