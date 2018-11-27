@@ -2,15 +2,12 @@ package flexbox;
 
 import java.util.ArrayList;
 
-
-
-
 public class Order {
-    
+
     public static GUI gui = new GUI();
-    public static ArrayList<Box> boxes=new ArrayList<Box>(); 
-    
-    public static void main(String[] args){
+    public static ArrayList<Box> boxes = new ArrayList<Box>();
+
+    public static void main(String[] args) {
         gui.setVisible(true);
     }
 
@@ -19,8 +16,7 @@ public class Order {
         boolean valid = true;
         double length = 0, width = 0, height = 0;
         int quantity = 0;
-        String cost="";
-        
+        String cost = "";
 
         try {
             length = Double.valueOf(lengthS);
@@ -31,14 +27,13 @@ public class Order {
             gui.inputError();
             valid = false;
         }
-        if(quantity<=0 || width <=0 || length<=0 || height<=0){
-            valid=false;
+        if (quantity <= 0 || width <= 0 || length <= 0 || height <= 0) {
+            valid = false;
             gui.boxNumError();
         }
         if (valid == true) {
             numOfBoxes++;
             int type = getBoxType(grade, colour, btmRein, crnrRein);
-            
 
             if (type == 1) {
                 Box1 box = new Box1(numOfBoxes, length, width, height, grade, colour, btmRein, crnrRein, seal, quantity);
@@ -60,9 +55,9 @@ public class Order {
             }
             if (type == 4) {
                 Box4 box = new Box4(numOfBoxes, length, width, height, grade, colour, btmRein, crnrRein, seal, quantity);
-               cost =  String.format("%.2f", box.getCost(box));
-               Invoice.addToTotal(box);
-               boxes.add(box);
+                cost = String.format("%.2f", box.getCost(box));
+                Invoice.addToTotal(box);
+                boxes.add(box);
             }
             if (type == 5) {
                 Box5 box = new Box5(numOfBoxes, length, width, height, grade, colour, btmRein, crnrRein, seal, quantity);
@@ -76,10 +71,30 @@ public class Order {
                 gui.notAvailable();
 
             }
-            if(valid){
-               gui.addToTable(length, width, height, grade, colour, btmRein, crnrRein, seal, quantity, cost,numOfBoxes);
-               gui.changeTotal(Invoice.getTotal());
+            if (valid) {
+                gui.addToTable(length, width, height, grade, colour, btmRein, crnrRein, seal, quantity, cost, numOfBoxes);
+                gui.changeTotal(Invoice.getTotal());
             }
+        }
+
+    }
+
+    public static void removeFromOrder(String ID) {
+        boolean valid = true;
+        int id = 0;
+        try {
+            id = Integer.valueOf(ID);
+        } catch (Exception IllegalArgumentException) {
+            gui.inputError();
+            valid = false;
+        }
+        if (valid && id-1>boxes.size()) {
+            boxes.remove(id - 1);
+            gui.clearTable(id - 1);
+            gui.reloadTable(boxes);
+        }
+        else{
+            
         }
 
     }
