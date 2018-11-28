@@ -131,27 +131,29 @@ public abstract class Box extends Order {
                      break;
         }
                      
-        
+        System.out.print("grade calc" + cost);
         
         if (bottomReinforcement == true) {
-            percentIncrease =+ 0.13;
+            percentIncrease += 0.13;
         }
         if (cornerReinforcement == true) {
-            percentIncrease =+ 0.12;
+            percentIncrease += 0.12;
         }
         if (sealable == true) {
-            percentIncrease =+ 0.10;
+            percentIncrease += 0.10;
         }
         if (colour == 1) {
-            percentIncrease =+ 0.12;
+            percentIncrease += 0.12;
         } 
-        else if (grade == 2) {
-            percentIncrease =+ 0.15;
+        if (colour == 2) {
+            percentIncrease += 0.15;
         }
         
         
         
         cost = cost * (percentIncrease + 1);
+        
+        System.out.print("percent increase" + cost);
         cost *= box.getQuantity();
         
         return cost;
