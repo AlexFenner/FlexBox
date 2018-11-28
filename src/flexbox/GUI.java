@@ -9,7 +9,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import static jdk.nashorn.internal.objects.NativeMath.round;
 
-
 public class GUI extends javax.swing.JFrame {
 
     /**
@@ -18,43 +17,69 @@ public class GUI extends javax.swing.JFrame {
     public GUI() {
         initComponents();
     }
-    public void notAvailable(){
+    //Displays error when a box type is not available
+    public void notAvailable() {
         JOptionPane.showMessageDialog(SystemPanel, "Sorry. Unfortunately we can not supply this type of box.");
     }
-     public void inputError(){
+    //Displays an error when the wrong data type is entered
+    public void inputError() {
         JOptionPane.showMessageDialog(SystemPanel, "ERROR - please ensure data fields are entered correctly");
     }
-      public void boxNumError(){
+    //Displays an error when the user tries to enter a value below 1
+    public void boxNumError() {
         JOptionPane.showMessageDialog(SystemPanel, "ERROR - Numerical values must be greater than 0");
     }
-        public void noBoxError(){
+    //Displays an error when the box to be deleted does not exist
+    public void noBoxError() {
         JOptionPane.showMessageDialog(SystemPanel, "ERROR - You cannot delete this box as it does not exist");
     }
-      public void clearTable(int ID){
-          DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
-          int numOfRows = model.getRowCount();
-          model.removeRow(ID);
-          deleteTxt.setText("");
-        
-      }
-      public void reloadTable(ArrayList<Box> boxes){
-          DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
-          int numOfRows = model.getRowCount();
-          for(int i =0;i<numOfRows;i++){
-              model.removeRow(0);
-          }
-          for(int j=0;j<boxes.size();j++){
-              Box currBox = boxes.get(j);
-              
-              model.addRow(new Object[]{j+1, currBox.getLenght() + " X " + currBox.getWidth() + " X " +
-             currBox.getHeight(), currBox.getGrade(), currBox.getColour(), currBox.getBottomReinforcement(),
-             currBox.getCornerReinforcement(), currBox.getSealable(), currBox.getQuantity(), "£" + String.format("%.2f",currBox.getCost(currBox))});
-          }
-          if(boxes.size()==0){
-              totalOutput.setText("£0.00");
-          }
-          
-      }
+
+    public void clearTable(int ID) {
+        DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
+        int numOfRows = model.getRowCount();
+        model.removeRow(ID);
+        deleteTxt.setText("");
+
+    }
+    /**
+     * Reloads the table after a box has been deleted to ensure that the Id of each box remaining is correct
+     * @param boxes the list of all boxes within the current order.
+    */
+    public void reloadTable(ArrayList<Box> boxes) {
+        DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
+        int numOfRows = model.getRowCount();
+        for (int i = 0; i < numOfRows; i++) {
+            model.removeRow(0);
+        }
+        for (int j = 0; j < boxes.size(); j++) {
+            Box currBox = boxes.get(j);
+
+            model.addRow(new Object[]{j + 1, currBox.getLenght() + " X " + currBox.getWidth() + " X "
+                + currBox.getHeight(), currBox.getGrade(), currBox.getColour(), currBox.getBottomReinforcement(),
+                currBox.getCornerReinforcement(), currBox.getSealable(), currBox.getQuantity(), "£" + String.format("%.2f", currBox.getCost(currBox))});
+        }
+        if (boxes.size() == 0) {
+            totalOutput.setText("£0.00");
+        }
+
+    }
+     public void addToTable(double length, double width, double height, int grade, int colour, boolean btmRein, boolean crnrRein, boolean seal, int quantity, String cost, int ID) {
+        DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
+        model.addRow(new Object[]{ID, length + " X " + width + " X " + height, grade, colour, btmRein, crnrRein, seal, quantity, "£" + cost});
+        lengthTxt.setText("");
+        heightTxt.setText("");
+        widthTxt.setText("");
+        gradeCombo.setSelectedIndex(0);
+        colourCombo.setSelectedIndex(0);
+        brBox.setSelected(false);
+        crBox.setSelected(false);
+        sealBox.setSelected(false);
+        quantitySpin.setValue(0);
+    }
+
+    public void changeTotal(double cost) {
+        totalOutput.setText("£" + String.format("%.2f", cost));
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -614,11 +639,8 @@ public class GUI extends javax.swing.JFrame {
         btmRein = brBox.isSelected();
         crnrRein = crBox.isSelected();
         seal = sealBox.isSelected();
-        quantity =  String.valueOf(quantitySpin.getValue());
+        quantity = String.valueOf(quantitySpin.getValue());
         Order.addToOrder(length, width, height, grade, colour, quantity, btmRein, crnrRein, seal);
-        
-        
-        
 
 
     }//GEN-LAST:event_addBoxButtonActionPerformed
@@ -638,28 +660,14 @@ public class GUI extends javax.swing.JFrame {
         sealBox.setSelected(false);
         quantitySpin.setValue(0);
     }//GEN-LAST:event_clearButtonActionPerformed
-    
+
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         String idDel = deleteTxt.getText();
         Order.removeFromOrder(idDel);
-        
+
     }//GEN-LAST:event_deleteButtonActionPerformed
-    public void addToTable(double length, double width, double height, int grade, int colour, boolean btmRein, boolean crnrRein, boolean seal, int quantity, String cost,int ID) {
-        DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
-        model.addRow(new Object[]{ID, length + " X " + width + " X " + height, grade, colour, btmRein, crnrRein, seal, quantity, "£" + cost});
-        lengthTxt.setText("");
-        heightTxt.setText("");
-        widthTxt.setText("");
-        gradeCombo.setSelectedIndex(0);
-        colourCombo.setSelectedIndex(0);
-        brBox.setSelected(false);
-        crBox.setSelected(false);
-        sealBox.setSelected(false);
-        quantitySpin.setValue(0);
-    }
-    public void changeTotal(double cost){
-        totalOutput.setText("£"+String.format("%.2f", cost));
-    }
+   
+
     /**
      * @param args the command line arguments
      */
@@ -694,7 +702,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AddBoxPanel;
@@ -742,4 +750,3 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField widthTxt;
     // End of variables declaration//GEN-END:variables
 }
-
