@@ -120,15 +120,12 @@ public class Order {
     public static int oneColours(boolean botReinf, boolean cornReinf) {
         boolean bot = botReinf;
         boolean corn = cornReinf;
-        if (!bot) {
+        if (!bot && !corn) {
+            return 2;
+            } 
+        else {
             return 6;
-        } else {
-            if (!corn) {
-                return 2;
-            } else {
-                return 6;
             }
-        }
     }
 
     public static int multiColors(boolean botReinf, boolean cornReinf) {
