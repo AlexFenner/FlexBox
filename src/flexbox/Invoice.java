@@ -100,6 +100,7 @@ public class Invoice extends Order {
                 }
 
                 System.out.println("Quantity: " + currBox.getQuantity());
+                System.out.println("Price: £" + String.format("%.2f", currBox.getCost(currBox)));
                 System.out.println();
             }
             System.out.println("Total Price: £" + String.format("%.2f", totalPrice));
