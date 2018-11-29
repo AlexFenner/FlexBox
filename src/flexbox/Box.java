@@ -119,69 +119,79 @@ public abstract class Box extends Order {
     public void setColour(int col) {
         colour = col;
     }
+
     /**
-     * @return whether or not the box has bottom reinforcement
-     * (overridden by child class)
+     * @return whether or not the box has bottom reinforcement (overridden by
+     * child class)
      */
     public boolean getBottomReinforcement() {
         return false;
     }
+
     /**
      * @param bottom value for whether or not the box has bottom reinforcement
      */
     public void setBottomReinforcement(boolean bottom) {
         bottomReinforcement = bottom;
     }
+
     /**
-      * @return whether or not the box has corner reinforcement 
-      * (overridden by child class)
+     * @return whether or not the box has corner reinforcement (overridden by
+     * child class)
      */
     public boolean getCornerReinforcement() {
         return false;
     }
+
     /**
      * @param corner value for whether or not the box has corner reinforcement
      */
     public void setCornerReinforcement(boolean corner) {
         cornerReinforcement = corner;
     }
+
     /**
      * @return whether or not the box has a sealable top
      */
     public boolean getSealable() {
         return sealable;
     }
+
     /**
      * @param seal Setting the value for whether or not the box is sealable
      */
     public void setSealable(boolean seal) {
         sealable = seal;
     }
+
     /**
      * @return the quantity of boxes
      */
     public int getQuantity() {
         return quantity;
     }
+
     /**
      * @param quant the number of boxes to be set
      */
     public void setQuantity(int quant) {
         quantity = quant;
     }
+
     /**
      * @return the area of the box
      */
     public double getArea() {
         /**
          * calculates the area of the box by adding the surface area of each
-         * side together 
+         * side together
          */
-        return 2 * (height * width) + 2 * (height * length) + 2 * 
-                (width * length);
+        return 2 * (height * width) + 2 * (height * length) + 2
+                * (width * length);
     }
+
     /**
-     * 
+     *
      * @param box the box that the price needs to be calculated for
      * @return The cost of the box
      */
@@ -215,10 +225,10 @@ public abstract class Box extends Order {
                 break;
         }
         /**
-         * Calculates the percentage to be added on based on the attributes of 
+         * Calculates the percentage to be added on based on the attributes of
          * the box.
          */
-        
+
         if (bottomReinforcement == true) {
             percentIncrease += 0.13; //+13% if the box has bottom reinforcement
         }
@@ -237,7 +247,6 @@ public abstract class Box extends Order {
 
         cost = cost * (percentIncrease + 1);// adds on price from above values
 
-        
         cost *= box.getQuantity(); // Multiplies the price by number of boxes
 
         return cost;

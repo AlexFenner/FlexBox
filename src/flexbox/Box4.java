@@ -2,8 +2,9 @@
  * Box 4 class used for a box that is of type 4 which extends the abstract class Box
  */
 package flexbox;
+
 /**
- * 
+ *
  * @author Group A4
  */
 public class Box4 extends Box {

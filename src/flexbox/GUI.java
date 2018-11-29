@@ -1,6 +1,6 @@
 /**
  *
- * @author up861536,
+ * @author Group A4
  */
 package flexbox;
 
@@ -17,23 +17,30 @@ public class GUI extends javax.swing.JFrame {
     public GUI() {
         initComponents();
     }
+
     //Displays error when a box type is not available
     public void notAvailable() {
         JOptionPane.showMessageDialog(SystemPanel, "Sorry. Unfortunately we can not supply this type of box.");
     }
+
     //Displays an error when the wrong data type is entered
     public void inputError() {
         JOptionPane.showMessageDialog(SystemPanel, "ERROR - please ensure data fields are entered correctly");
     }
+
     //Displays an error when the user tries to enter a value below 1
     public void boxNumError() {
         JOptionPane.showMessageDialog(SystemPanel, "ERROR - Numerical values must be greater than 0");
     }
+
     //Displays an error when the box to be deleted does not exist
     public void noBoxError() {
         JOptionPane.showMessageDialog(SystemPanel, "ERROR - You cannot delete this box as it does not exist");
     }
-
+    /**
+     * Deletes a row from the table
+     * @param ID row to delete
+     */
     public void clearTable(int ID) {
         DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
         int numOfRows = model.getRowCount();
@@ -41,10 +48,13 @@ public class GUI extends javax.swing.JFrame {
         deleteTxt.setText("");
 
     }
+
     /**
-     * Reloads the table after a box has been deleted to ensure that the Id of each box remaining is correct
+     * Reloads the table after a box has been deleted to ensure that the Id of
+     * each box remaining is correct
+     *
      * @param boxes the list of all boxes within the current order.
-    */
+     */
     public void reloadTable(ArrayList<Box> boxes) {
         DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
         int numOfRows = model.getRowCount();
@@ -63,7 +73,21 @@ public class GUI extends javax.swing.JFrame {
         }
 
     }
-     public void addToTable(double length, double width, double height, int grade, int colour, boolean btmRein, boolean crnrRein, boolean seal, int quantity, String cost, int ID) {
+    /**
+     * 
+     * @param length Length of box
+     * @param width width of box
+     * @param height height of box
+     * @param grade grade of box
+     * @param colour colour of box
+     * @param btmRein whether or not reinforced bottom
+     * @param crnrRein whether or not reinforced corners
+     * @param seal whether or not sealable top
+     * @param quantity number of boxes
+     * @param cost price of box
+     * @param ID id of box
+     */
+    public void addToTable(double length, double width, double height, int grade, int colour, boolean btmRein, boolean crnrRein, boolean seal, int quantity, String cost, int ID) {
         DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
         model.addRow(new Object[]{ID, length + " X " + width + " X " + height, grade, colour, btmRein, crnrRein, seal, quantity, "£" + cost});
         lengthTxt.setText("");
@@ -76,7 +100,10 @@ public class GUI extends javax.swing.JFrame {
         sealBox.setSelected(false);
         quantitySpin.setValue(0);
     }
-
+    /**
+     * Changes value of running total
+     * @param cost new running total
+     */
     public void changeTotal(double cost) {
         totalOutput.setText("£" + String.format("%.2f", cost));
     }
@@ -703,7 +730,6 @@ public class GUI extends javax.swing.JFrame {
     private void CompleteOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompleteOrderBtnActionPerformed
         Order.completeOrder();
     }//GEN-LAST:event_CompleteOrderBtnActionPerformed
-   
 
     /**
      * @param args the command line arguments
