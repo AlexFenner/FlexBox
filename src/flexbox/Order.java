@@ -102,6 +102,9 @@ public class Order {
         }
 
     }
+    public static void completeOrder(){
+        Invoice.printReciept(boxes);
+    }
 
     public static int noColours(boolean botReinf, boolean cornReinf) {
         boolean bot = botReinf;
