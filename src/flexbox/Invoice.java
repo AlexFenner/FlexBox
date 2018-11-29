@@ -75,7 +75,8 @@ public class Invoice extends Order {
 
         for (int i = 0; i < numOfBoxes; i++) { // prints details for each box
             Box currBox = boxList.get(i);
-            System.out.println("ID: " + i + 1);
+            int id = i+1;
+            System.out.println("ID: " + id);
             System.out.println("Dimensions: " + currBox.getLenght() + " x "
                     + currBox.getWidth() + " x " + currBox.getHeight());
             System.out.println("Grade: " + currBox.getGrade());
