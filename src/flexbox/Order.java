@@ -56,6 +56,10 @@ public class Order {
             valid = false;
             gui.boxNumError();
         }
+        if(width > 50 || length > 50 || height > 50){
+            valid = false;
+            gui.tooLarge();
+        }
         if (valid == true) {
             numOfBoxes++;
             int type = getBoxType(grade, colour, btmRein, crnrRein);

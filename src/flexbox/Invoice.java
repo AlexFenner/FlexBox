@@ -49,8 +49,9 @@ public class Invoice extends Order {
      * @param box The box to be taken away from the total
      */
     public static void takeFromTotal(Box box) {
-        double price = box.getCost(box);
-        totalPrice -= price;
+        String cost = String.format("%.2f", box.getCost(box));
+        double takeOff = Double.valueOf(cost);
+        totalPrice -= takeOff;
     }
 
     /**
