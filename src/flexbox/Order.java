@@ -149,6 +149,7 @@ public class Order {
      */
     public static void completeOrder() {
         Invoice.printReciept(boxes);
+        System.exit(0); // Closes the program
     }
 
     /**

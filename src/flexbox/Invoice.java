@@ -104,12 +104,9 @@ public class Invoice extends Order {
                 System.out.println();
             }
             System.out.println("Total Price: £" + String.format("%.2f", totalPrice));
-            System.exit(0); // Closes the program
         }
         else{
             System.out.println("No boxes ordered");
-            System.exit(0); // Closes the program
-            
         }
     }
 }
