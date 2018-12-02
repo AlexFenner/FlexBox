@@ -1,5 +1,6 @@
 /**
- * Box 3 class used for a box that is of type 3 which extends the abstract class Box
+ * Box 3 class used for a box that is of type 3 which extends the abstract 
+ * class Box
  */
 package flexbox;
 

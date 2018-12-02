@@ -1,5 +1,6 @@
 /**
- * Box 5 class used for a box that is of type 4 which extends the abstract class Box
+ * Box 5 class used for a box that is of type 4 which extends the abstract 
+ * class Box
  */
 package flexbox;
 

@@ -75,7 +75,7 @@ public class Invoice extends Order {
             System.out.println("Boxes");
             System.out.println("-----");
 
-            for (int i = 0; i < numOfBoxes; i++) { // prints details for each box
+            for (int i = 0; i < numOfBoxes; i++) { //prints details for each box
                 Box currBox = boxList.get(i);
                 int id = i + 1;
                 System.out.println("ID: " + id);
@@ -101,10 +101,12 @@ public class Invoice extends Order {
                 }
 
                 System.out.println("Quantity: " + currBox.getQuantity());
-                System.out.println("Price: £" + String.format("%.2f", currBox.getCost(currBox)));
+                System.out.println("Price: £" + String.format("%.2f", 
+                        currBox.getCost(currBox)));
                 System.out.println();
             }
-            System.out.println("Total Price: £" + String.format("%.2f", totalPrice));
+            System.out.println("Total Price: £" + String.format("%.2f", 
+                    totalPrice));
         }
         else{
             System.out.println("No boxes ordered");

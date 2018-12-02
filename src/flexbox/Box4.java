@@ -1,5 +1,6 @@
 /**
- * Box 4 class used for a box that is of type 4 which extends the abstract class Box
+ * Box 4 class used for a box that is of type 4 which extends the abstract
+ * class Box
  */
 package flexbox;
 
@@ -23,7 +24,8 @@ public class Box4 extends Box {
      * @param qnty The number of boxes
      */
     Box4(double boxLength, double boxWidth, double boxHeight, int boxGrade,
-            int boxColour, boolean btmRein, boolean crnrRein, boolean boxSeal, int qnty) {
+            int boxColour, boolean btmRein, boolean crnrRein, boolean boxSeal,
+            int qnty) {
         //references values that are within the superclass Box's constructor 
         super(boxLength, boxWidth, boxHeight, boxGrade,
                 boxColour, btmRein, crnrRein, boxSeal, qnty);

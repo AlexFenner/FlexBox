@@ -191,7 +191,6 @@ public abstract class Box extends Order {
     }
 
     /**
-     *
      * @param box the box that the price needs to be calculated for
      * @return The cost of the box
      */
@@ -246,7 +245,6 @@ public abstract class Box extends Order {
         }
 
         cost = cost * (percentIncrease + 1);// adds on price from above values
-
         cost *= box.getQuantity(); // Multiplies the price by number of boxes
 
         return cost;

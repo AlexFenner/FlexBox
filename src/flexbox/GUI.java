@@ -7,7 +7,7 @@ package flexbox;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import static jdk.nashorn.internal.objects.NativeMath.round;
+
 
 public class GUI extends javax.swing.JFrame {
 
@@ -68,9 +68,13 @@ public class GUI extends javax.swing.JFrame {
         for (int j = 0; j < boxes.size(); j++) {
             Box currBox = boxes.get(j);
 
-            model.addRow(new Object[]{j + 1, currBox.getLenght() + " X " + currBox.getWidth() + " X "
-                + currBox.getHeight(), currBox.getGrade(), currBox.getColour(), currBox.getBottomReinforcement(),
-                currBox.getCornerReinforcement(), currBox.getSealable(), currBox.getQuantity(), "£" + String.format("%.2f", currBox.getCost(currBox))});
+            model.addRow(new Object[]{j + 1, currBox.getLenght() + " X " +
+                    currBox.getWidth() + " X "+ currBox.getHeight(),
+                currBox.getGrade(), currBox.getColour(), 
+                currBox.getBottomReinforcement(),
+                currBox.getCornerReinforcement(), currBox.getSealable(),
+                currBox.getQuantity(), "£" + 
+                        String.format("%.2f", currBox.getCost(currBox))});
         }
         if (boxes.size() == 0) {
             totalOutput.setText("£0.00");
@@ -91,9 +95,12 @@ public class GUI extends javax.swing.JFrame {
      * @param cost price of box
      * @param ID id of box
      */
-    public void addToTable(double length, double width, double height, int grade, int colour, boolean btmRein, boolean crnrRein, boolean seal, int quantity, String cost, int ID) {
+    public void addToTable(double length, double width, double height, 
+            int grade, int colour, boolean btmRein, boolean crnrRein, 
+            boolean seal, int quantity, String cost, int ID) {
         DefaultTableModel model = (DefaultTableModel) orderTable.getModel();
-        model.addRow(new Object[]{ID, length + " X " + width + " X " + height, grade, colour, btmRein, crnrRein, seal, quantity, "£" + cost});
+        model.addRow(new Object[]{ID, length + " X " + width + " X " + height,
+            grade, colour, btmRein, crnrRein, seal, quantity, "£" + cost});
         lengthTxt.setText("");
         heightTxt.setText("");
         widthTxt.setText("");
@@ -703,7 +710,8 @@ public class GUI extends javax.swing.JFrame {
         crnrRein = crBox.isSelected();
         seal = sealBox.isSelected();
         quantity = String.valueOf(quantitySpin.getValue());
-        Order.addToOrder(length, width, height, grade, colour, quantity, btmRein, crnrRein, seal);
+        Order.addToOrder(length, width, height, grade, colour, quantity,
+                btmRein, crnrRein, seal);
 
 
     }//GEN-LAST:event_addBoxButtonActionPerformed
